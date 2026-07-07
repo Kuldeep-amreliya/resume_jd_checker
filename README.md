@@ -294,6 +294,3 @@ All settings are read from environment variables or a `.env` file.
 
 ---
 
-## 📝 License
-
-MIT — feel free to use, modify, and build on this.
