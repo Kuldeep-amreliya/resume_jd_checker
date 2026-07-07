@@ -1,0 +1,31 @@
+# --- Web framework ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20          # required by FastAPI for UploadFile / multipart form parsing
+
+# --- Settings / validation ---
+pydantic==2.10.4
+pydantic-settings==2.7.1
+
+# --- Database ---
+SQLAlchemy==2.0.36
+# alembic==1.14.0                 # optional — uncomment if you add migrations later
+
+# --- LLM ---
+groq==0.15.0
+
+# --- Document ingestion ---
+PyMuPDF>=1.25,<2.0                # fitz — PDF text extraction; confirmed wheel support for Python 3.10-3.14
+python-docx==1.1.2                # DOCX text extraction
+chardet==5.2.0                    # encoding detection fallback for .txt
+
+# --- Optional semantic scoring (scoring/semantic.py) ---
+# Only needed if you implement the cosine-similarity fallback layer.
+# These are heavy (esp. torch) — install only when you actually build that module,
+# and lazy-import inside the function so the app can boot without them.
+# sentence-transformers==3.3.1
+# torch==2.5.1
+
+# --- Testing (optional but recommended given the pure-function scoring engine) ---
+pytest==8.3.4
+httpx==0.28.1                     # needed for FastAPI's TestClient
