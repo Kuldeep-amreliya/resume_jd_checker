@@ -167,19 +167,43 @@ export default function App() {
           />
 
           <SectionTitle>Extracted profiles</SectionTitle>
-          <details className="mt-3 border border-hair-strong">
-            <summary className="flex cursor-pointer items-center justify-between bg-paper-raised px-4.5 py-3.5 text-[12.5px] marker:content-none [&::-webkit-details-marker]:hidden">
-              Resume profile — parsed fields
+          <details className="group mt-3 border border-hair-strong">
+            <summary className="flex cursor-pointer items-center justify-between bg-paper-raised px-7 py-3.5 text-[12.5px] transition-colors hover:bg-[#F0EDE3] marker:content-none [&::-webkit-details-marker]:hidden">
+              <span>Resume profile — parsed fields</span>
+              <svg
+                className="h-3.5 w-3.5 flex-shrink-0 text-stone transition-transform duration-200 group-open:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </summary>
-            <div className="border-t border-hair bg-paper-raised px-4.5 pb-5 pt-1.5">
+            <div className="border-t border-hair bg-paper-raised px-7 pb-5 pt-3">
               <ResumeProfileDetail profile={result.resume_profile} />
             </div>
           </details>
-          <details className="mt-3 border border-hair-strong">
-            <summary className="flex cursor-pointer items-center justify-between bg-paper-raised px-4.5 py-3.5 text-[12.5px] marker:content-none [&::-webkit-details-marker]:hidden">
-              JD profile — parsed fields
+          <details className="group mt-3 border border-hair-strong">
+            <summary className="flex cursor-pointer items-center justify-between bg-paper-raised px-7 py-3.5 text-[12.5px] transition-colors hover:bg-[#F0EDE3] marker:content-none [&::-webkit-details-marker]:hidden">
+              <span>JD profile — parsed fields</span>
+              <svg
+                className="h-3.5 w-3.5 flex-shrink-0 text-stone transition-transform duration-200 group-open:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
             </summary>
-            <div className="border-t border-hair bg-paper-raised px-4.5 pb-5 pt-1.5">
+            <div className="border-t border-hair bg-paper-raised px-7 pb-5 pt-3">
               <JDProfileDetail profile={result.jd_profile} />
             </div>
           </details>

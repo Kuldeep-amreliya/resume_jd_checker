@@ -18,6 +18,7 @@ from app.llm.extraction import build_resume_profile, build_jd_profile
 from app.schemas.api_schemas import MatchResponse, HealthResponse
 from app.scoring.report import build_match_report
 from app.llm.skill_matching import match_skills_against_resume
+from app.ingestion.doc_type_detector import detect_and_fix_swap
 
 
 logger = logging.getLogger(__name__)
@@ -62,6 +63,15 @@ async def create_match(
         )
     except IngestionError as e:
         raise HTTPException(status_code=422, detail=e.message) from e
+
+    # --- 1b. Auto-correct if resume/JD were uploaded into the wrong fields ---
+    corrected_resume_text, corrected_jd_text, was_swapped = detect_and_fix_swap(
+        resume_doc.raw_text, jd_doc.raw_text
+    )
+    if was_swapped:
+        logger.info("Detected resume/JD fields were swapped — auto-correcting.")
+        resume_doc.raw_text = corrected_resume_text
+        jd_doc.raw_text = corrected_jd_text
 
     # Persist raw documents (best-effort — never blocks the response)
     resume_doc_row = crud.try_save_document(db, "resume", resume_doc)
